@@ -1,7 +1,270 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoltan Vegh</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #f5f8ff, #fdf5ff);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, #4e8ef7, #9b4ef7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        .hero p {
+            color: #555;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .scroll-down {
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: #aaa;
+        }
+
+        .projects-section {
+            padding: 3rem 1rem;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .projects-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-filters button {
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        .project-filters button:hover {
+            background: #ddd;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex: 1;
+        }
+
+        .card-content h3 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-dark {
+            background: #333;
+            color: white;
+        }
+
+        .btn-light {
+            background: #eee;
+            color: #333;
+        }
+
+        .btn-dark:hover {
+            background: #555;
+        }
+
+        .btn-light:hover {
+            background: #ddd;
+        }
+
+        .contact-section {
+            padding: 3rem 1rem;
+            background: linear-gradient(to bottom, #f5faff, #ffffff);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contact-buttons {
+            margin-bottom: 1rem;
+        }
+
+        .contact-buttons a {
+            display: inline-block;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            background: #eee;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .contact-buttons a:hover {
+            background: #ddd;
+        }
+
+        .socials a {
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .socials a:hover {
+            color: #555;
+        }
+    </style>
+
+    <script src="https://kit.fontawesome.com/a03e56bb18.js" crossorigin="anonymous"></script>
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <section class="hero">
+        <h1>Zoltan Vegh</h1>
+        <p>Junior iOS Developer</p>
+        <div class="scroll-down">&#8595;</div>
+    </section>
+
+    <section class="projects-section">
+        <h2>Featured Projects</h2>
+        <div class="project-filters">
+            <button>All Projects</button>
+            <button>Swift Projects</button>
+            <button>Unity Projects</button>
+            <button>Godot Projects</button>
+        </div>
+        <div class="projects">
+            <div class="card">
+                <img src="images/questReadme.png" alt="Project Image">
+                <div class="card-content">
+                    <h3>Risen Wiki Companion App</h3>
+                    <p>Short description of the project. Keep it concise and clear.</p>
+                    <div class="buttons">
+                        <!--<a href="#" target="_blank" class="btn-dark">View Project</a>-->
+                        <a href="https://github.com/zoli0829/RisenWiki" target="_blank" class="btn-light">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/screenshotAppDelegate.png" alt="Project Image">
+                <div class="card-content">
+                    <h3>macOS System Stats Monitor</h3>
+                    <p>Short description of the project. Keep it concise and clear.</p>
+                    <div class="buttons">
+                        <!--<a href="#" target="_blank" class="btn-dark">View Project</a>-->
+                        <a href="https://github.com/zoli0829/MenuBarApp" target="_blank" class="btn-light">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x180" alt="Project Image">
+                <div class="card-content">
+                    <h3>Project Three</h3>
+                    <p>Short description of the project. Keep it concise and clear.</p>
+                    <div class="buttons">
+                        <a href="#" target="_blank" class="btn-dark">View Project</a>
+                        <a href="#" target="_blank" class="btn-light">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x180" alt="Project Image">
+                <div class="card-content">
+                    <h3>Project Four</h3>
+                    <p>Short description of the project. Keep it concise and clear.</p>
+                    <div class="buttons">
+                        <a href="#" target="_blank" class="btn-dark">View Project</a>
+                        <a href="#" target="_blank" class="btn-light">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>Let's Connect</h2>
+        <div class="contact-buttons">
+            <a href="#">Get in Touch</a>
+            <a href="#">View Resume</a>
+        </div>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/zvegh/" target="_blank"><i
+                    class="fa-brands fa-square-linkedin"></i></a>
+            <a href="https://github.com/zoli0829" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+            <a href="https://zoltanvegh.itch.io" target="_blank"><i class="fa-brands fa-itch-io"></i></a>
+        </div>
+    </section>
 </body>
+
 </html>

@@ -1,0 +1,2 @@
+[] - Open the images in a bigger picture when clicked on the image on the cards
+[] - Working project sorting based on tech
