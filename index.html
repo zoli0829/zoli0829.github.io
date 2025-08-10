@@ -184,6 +184,16 @@
         .socials a:hover {
             color: #555;
         }
+
+        .hidden {
+            display: none !important;
+            /* Force hide even inside CSS grid */
+        }
+
+        .project-filters button.active {
+            background: #4e8ef7;
+            color: white;
+        }
     </style>
 
     <script src="https://kit.fontawesome.com/a03e56bb18.js" crossorigin="anonymous"></script>
@@ -199,14 +209,15 @@
     <section class="projects-section">
         <h2>Featured Projects</h2>
         <div class="project-filters">
-            <button>All Projects</button>
-            <button>Swift Projects</button>
-            <button>Unity Projects</button>
-            <button>Godot Projects</button>
+            <button type="button" data-filter="all" class="active">All Projects</button>
+            <button type="button" data-filter="unity">Unity Projects</button>
+            <button type="button" data-filter="godot">Godot Projects</button>
+            <button type="button" data-filter="swift">Swift Projects</button>
         </div>
 
         <div class="projects">
-            <div class="card">
+
+            <div class="card" data-type="swift">
                 <img src="images/questReadme.png" alt="Project Image">
                 <div class="card-content">
                     <h3>Risen Wiki Companion App</h3>
@@ -218,7 +229,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-type="swift">
                 <img src="images/screenshotAppDelegate.png" alt="Project Image">
                 <div class="card-content">
                     <h3>macOS System Stats Monitor</h3>
@@ -230,7 +241,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-type="swift">
                 <img src="images/weather-app-icon.jpg" alt="Project Image">
                 <div class="card-content">
                     <h3>iOS Weather App</h3>
@@ -245,7 +256,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-type="unity">
                 <img src="images/zkyrim.png" alt="Project Image">
                 <div class="card-content">
                     <h3>Zkyrim</h3>
@@ -257,7 +268,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-type="unity">
                 <img src="images/deathtrapDungeon.png" alt="Project Image">
                 <div class="card-content">
                     <h3>Deathtrap Dungeon</h3>
@@ -270,7 +281,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-type="godot">
                 <img src="images/knight_survivor.png" alt="Project Image">
                 <div class="card-content">
                     <h3>Knight Survivor</h3>
@@ -283,7 +294,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" data-type="godot">
                 <img src="images/survivor_godot_3.png" alt="Project Image">
                 <div class="card-content">
                     <h3>Action Survivor Prototype</h3>
@@ -313,6 +324,40 @@
             <a href="https://zoltanvegh.itch.io" target="_blank"><i class="fa-brands fa-itch-io"></i></a>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.project-filters button');
+            const projectCards = document.querySelectorAll('.projects .card');
+
+            // Make "All" active on load (if not already)
+            const allBtn = document.querySelector('.project-filters button[data-filter="all"]');
+            if (allBtn) allBtn.classList.add('active');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.dataset.filter;
+                    console.log('Filter clicked:', filter); // debug
+
+                    // update active class
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // show/hide cards
+                    projectCards.forEach(card => {
+                        const type = card.dataset.type;
+                        console.log(' - card type:', type); // debug
+                        if (filter === 'all' || type === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
