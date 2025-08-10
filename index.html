@@ -194,6 +194,60 @@
             background: #4e8ef7;
             color: white;
         }
+
+        /* Overlay styles */
+        .image-overlay {
+            position: fixed;
+            inset: 0;
+            /* top:0; left:0; right:0; bottom:0 */
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .project-filters {
+            display: grid;
+            gap: 10px;
+            /* space between buttons */
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            padding: 10px;
+        }
+
+        .project-filters button {
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+            background: #eee;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .project-filters button.active {
+            background: #4e8ef7;
+            color: white;
+        }
+
+        .project-filters button {
+            height: 48px;
+        }
     </style>
 
     <script src="https://kit.fontawesome.com/a03e56bb18.js" crossorigin="anonymous"></script>
@@ -325,6 +379,10 @@
         </div>
     </section>
 
+    <div class="image-overlay" id="imageOverlay">
+        <img src="" alt="Enlarged Project Image">
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.project-filters button');
@@ -354,6 +412,30 @@
                         }
                     });
                 });
+            });
+        });
+        // Image overlay functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('imageOverlay');
+            const overlayImg = overlay.querySelector('img');
+
+            // Listen for clicks on project images
+            document.querySelectorAll('.card img').forEach(img => {
+                img.addEventListener('click', () => {
+                    overlayImg.src = img.src;
+                    overlay.classList.add('active');
+                });
+            });
+
+            // Close overlay on click or Escape key
+            overlay.addEventListener('click', () => {
+                overlay.classList.remove('active');
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    overlay.classList.remove('active');
+                }
             });
         });
     </script>
